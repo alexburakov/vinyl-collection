@@ -1,5 +1,4 @@
 .wrapper {
-  margin: 0 auto;
   display: flex;
 }
 
@@ -7,8 +6,9 @@
   position: relative;
   display: flex;
   align-items: center;
+  overflow: hidden;
   padding-left: 10rem;
-  min-width: 50%;
+  width: 50%;
   height: 100vh;
   background-image: radial-gradient(
     circle at center left,
@@ -49,13 +49,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 50%;
+  width: 50%;
   height: 100vh;
   background-color: var(--background-black);
-  padding-top: 8rem;
   padding-left: 3.2rem;
   padding-right: 3.2rem;
   z-index: 1;
+}
+
+.logo {
+  margin-top: 6.4rem;
+}
+
+.container__form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes rotating {
@@ -71,11 +82,9 @@
   html {
     font-size: 55.5%;
   }
-
   .presentation {
     display: none;
   }
-
   .main__container {
     width: 100%;
   }
