@@ -1,0 +1,5 @@
+.menu__container {
+  width: 11rem;
+  height: 100vh;
+  background-color: var(--background-black_w);
+}

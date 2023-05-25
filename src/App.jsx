@@ -1,6 +1,12 @@
 import './App.css';
 import { MainPage } from './layouts/MainPage';
+import { MyCollection } from './layouts/MyCollection';
 
 export function App() {
-  return <MainPage />;
+  return (
+    <>
+      {false && <MainPage />}
+      <MyCollection />
+    </>
+  );
 }

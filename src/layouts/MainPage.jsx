@@ -1,15 +1,13 @@
 import styles from './MainPage.module.css';
-import logo from '../static/logo.svg';
+import logo__ico from '../static/logo.svg';
 import { LoginForm } from '../components/LoginForm';
 
-export const MainPage = ({ children }) => {
+export const MainPage = () => {
   return (
     <div className={styles.wrapper}>
       <main className={styles.main__container}>
-        <img className={styles.logo} src={logo} />
-        <div className={styles.container__form}>
-          <LoginForm />
-        </div>
+        <img className={styles.logo} src={logo__ico} />
+        <LoginForm />
       </main>
       <div className={styles.presentation}>
         <p className={styles.presentation__header}>
