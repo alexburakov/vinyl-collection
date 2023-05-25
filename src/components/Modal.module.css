@@ -1,0 +1,62 @@
+.modal__container {
+  position: relative;
+  padding-left: 3.2rem;
+  padding-right: 3.2rem;
+  height: 100vh;
+  background-color: var(--background-black);
+  color: var(--white);
+  overflow: scroll;
+}
+
+.modal__header {
+  margin-top: 3.2rem;
+  font-family: 'Bebas Neue';
+  font-weight: 400;
+  font-size: 6.4rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.modal__close__btn {
+  background-color: transparent;
+  border: none;
+  font-size: 2.4rem;
+  color: var(--white);
+  position: absolute;
+  top: 4.8rem;
+  right: 4.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal__close__btn:hover {
+  color: var(--orange);
+}
+
+.input__container {
+  position: sticky;
+  top: 0rem;
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
+  width: 100%;
+  display: flex;
+  background-color: var(--background-black);
+}
+
+.modal__qr__btn {
+  margin-left: 3.2rem;
+  min-width: 6.4rem;
+  background-color: transparent;
+  border-radius: 1.2rem;
+  border: 2px solid var(--white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal__qr__btn:hover {
+  background-color: var(--white);
+}
+
+.modal__qr__btn:hover img {
+  filter: invert();
+}

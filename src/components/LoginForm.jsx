@@ -16,6 +16,7 @@ export const LoginForm = () => {
         <Input placeholder={'E-mail'} type={'email'} />
         <Input placeholder={'Password'} />
         <Input placeholder={'Repeat password'} />
+        <rb className={styles.mg_1} />
         <Button>Create account</Button>
         <span className={styles.form__subheader}>or</span>
         <Button>Sign up with Google</Button>

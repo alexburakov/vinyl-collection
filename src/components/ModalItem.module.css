@@ -1,0 +1,39 @@
+.modal__item__container {
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item__img {
+  width: 8.8rem;
+  height: 8.8rem;
+
+  border-radius: 1.2rem;
+}
+
+.btn__container {
+  min-width: 16rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.txt {
+  min-width: 40%;
+  padding-left: 1.6rem;
+}
+
+.txt__album {
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+}
+
+@media only screen and (max-width: 680px) {
+  .txt__album {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+}
