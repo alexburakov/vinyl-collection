@@ -1,0 +1,27 @@
+.item__container {
+  width: 100%;
+}
+.txt__container {
+  width: 96%;
+}
+.txt {
+  margin-top: 0.8rem;
+  color: var(--white);
+}
+
+.txt__gray {
+  color: var(--white_placeholder);
+}
+
+.img {
+  width: 100%;
+  border-radius: 1.6rem;
+  transition: all 0.3s ease;
+  object-fit: cover;
+}
+
+.item__container:hover img {
+  filter: contrast(2.5);
+  filter: saturate(1.2);
+  transform: scale(0.98);
+}

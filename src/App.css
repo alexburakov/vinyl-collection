@@ -1,6 +1,7 @@
 :root {
   /* COLORS */
   --white: #fff;
+  --white_2: #eaeaea;
   --black: #000;
   --orange: #d9785b;
   --orange_dark: #e75d30;
@@ -14,6 +15,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   /* border: 1px solid #cd8492; */
 }
 
@@ -23,7 +25,6 @@ html {
 }
 
 body {
-  box-sizing: border-box;
   scroll-behavior: smooth;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 1.6rem;

@@ -1,0 +1,34 @@
+.content__container {
+  width: 100%;
+  padding-left: 3.2rem;
+  padding-right: 3.2rem;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.content__header {
+  position: relative;
+  margin-top: 6.4rem;
+  text-align: center;
+  font-family: 'Bebas Neue';
+  font-weight: 400;
+  font-size: 8.4rem;
+  line-height: 1;
+  color: var(--white);
+}
+
+.header__counter {
+  position: absolute;
+  top: -2.4rem;
+  font-size: 5.2rem;
+  color: var(--orange);
+}
+
+.input__container {
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
+  position: sticky;
+  top: 0rem;
+  z-index: 10;
+  background-color: var(--background-black);
+}

@@ -6,7 +6,7 @@ export function App() {
   return (
     <>
       {false && <MainPage />}
-      <MyCollection />
+      {!false && <MyCollection />}
     </>
   );
 }
