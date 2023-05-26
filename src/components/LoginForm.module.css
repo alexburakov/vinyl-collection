@@ -17,7 +17,6 @@
 }
 .form__subheader {
   margin-top: 1.6rem;
-  margin-bottom: 1.6rem;
   font-family: 'IBM Plex Mono';
   font-weight: 400;
   font-size: 1.6rem;
@@ -34,7 +33,7 @@
 }
 
 .form__login {
-  margin-top: 6.4rem;
+  margin-top: 3.2rem;
   width: 90%;
   max-width: 60rem;
   display: flex;
@@ -43,4 +42,10 @@
 
 .mg_1 {
   margin-top: 3.2rem;
+}
+.form__sep {
+  text-align: center;
+  margin-bottom: 1.6rem;
+  margin-top: 1.6rem;
+  color: var(--white);
 }

@@ -18,7 +18,7 @@ export const LoginForm = () => {
         <Input placeholder={'Repeat password'} />
         <rb className={styles.mg_1} />
         <Button>Create account</Button>
-        <span className={styles.form__subheader}>or</span>
+        <span className={styles.form__sep}>or</span>
         <Button>Sign up with Google</Button>
       </form>
     </div>
