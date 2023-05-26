@@ -3,11 +3,13 @@ import { Input } from './UI/Input';
 import { ModalItemsList } from './ModalItemsList';
 import qr from '../static/qr.svg';
 
-export const Modal = () => {
+export const Modal = ({ close }) => {
   return (
     <div className={styles.modal__container}>
       <h2 className={styles.modal__header}>Add album</h2>
-      <button className={styles.modal__close__btn}>✕</button>
+      <button className={styles.modal__close__btn} onClick={() => close()}>
+        ✕
+      </button>
       <div className={styles.input__container}>
         <Input />
         <button className={styles.modal__qr__btn}>

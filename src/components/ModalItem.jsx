@@ -7,13 +7,13 @@ export const ModalItem = () => {
     <div className={styles.modal__item__container}>
       <img className={styles.item__img} src={url}></img>
       <div className={styles.container}>
+        <p className={styles.txt__album}>
+          {`David Bowie The Rise And Fall Of Ziggy Stardust And The Spiders From
+          Mars`}
+        </p>
         <p className={styles.txt}>{`Artist name`}</p>
         <p className={styles.txt}>{`1998`}</p>
       </div>
-      <p className={styles.txt__album}>
-        {`David Bowie The Rise And Fall Of Ziggy Stardust And The Spiders From
-          Mars`}
-      </p>
       <div className={styles.btn__container}>
         <Button>HAVE</Button>
         <Button>Wish</Button>
