@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import styles from './MyCollection.module.css';
-import { Content } from '../components/Content';
-import { Menu } from '../components/Menu';
-import { ModalContainer } from '../components/ModalContainer';
-import { Modal } from '../components/Modal';
+import { Content } from '../components/Collection/Content';
+import { Menu } from '../components/Collection/Menu';
+import { ModalContainer } from '../components/Modal/ModalContainer';
+import { Modal } from '../components/Modal/Modal';
 
-export const MyCollection = () => {
+const MyCollection = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const toggle = () => setModalVisible(!modalVisible);
 
@@ -21,3 +21,5 @@ export const MyCollection = () => {
     </div>
   );
 };
+
+export default MyCollection;

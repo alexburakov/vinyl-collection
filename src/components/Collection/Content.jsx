@@ -1,5 +1,5 @@
 import styles from './Content.module.css';
-import { Input } from './UI/Input';
+import { Input } from '../UI/Input';
 import { ItemList } from './ItemList';
 export const Content = () => {
   return (

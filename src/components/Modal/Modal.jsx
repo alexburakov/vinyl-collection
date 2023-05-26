@@ -1,7 +1,7 @@
 import styles from './Modal.module.css';
-import { Input } from './UI/Input';
+import { Input } from '../UI/Input';
 import { ModalItemsList } from './ModalItemsList';
-import qr from '../static/qr.svg';
+import qr from '../../static/qr.svg';
 
 export const Modal = ({ close }) => {
   return (

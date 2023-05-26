@@ -2,7 +2,7 @@ import styles from './MainPage.module.css';
 import logo__ico from '../static/logo.svg';
 import { LoginForm } from '../components/LoginForm';
 
-export const MainPage = () => {
+const MainPage = () => {
   return (
     <div className={styles.wrapper}>
       <main className={styles.main__container}>
@@ -17,3 +17,5 @@ export const MainPage = () => {
     </div>
   );
 };
+
+export default MainPage;
