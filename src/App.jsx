@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Page404 } from './layouts/Page404';
+import { Loading } from './components/UI/Loading';
 
 const MainPage = React.lazy(() => import('./layouts/MainPage'));
 const MyCollection = React.lazy(() => import('./layouts/MyCollection'));
@@ -13,7 +14,7 @@ export function App() {
       <Route
         path="/login"
         element={
-          <React.Suspense fallback={<p>Loading...</p>}>
+          <React.Suspense fallback={<Loading />}>
             <MainPage />
           </React.Suspense>
         }
@@ -21,7 +22,7 @@ export function App() {
       <Route
         path="/my-collection"
         element={
-          <React.Suspense fallback={<p>Loading...</p>}>
+          <React.Suspense fallback={<Loading />}>
             <MyCollection />
           </React.Suspense>
         }
