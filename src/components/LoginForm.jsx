@@ -1,11 +1,16 @@
 import styles from './LoginForm.module.css';
 import { Button } from './UI/Button';
 import { Input } from './UI/Input';
-import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { Login } from '../store/authSlice';
+
 export const LoginForm = () => {
+  const dispatch = useDispatch();
+  const isLogin = useSelector((state) => state.auth);
+
   const { register, handleSubmit } = useForm();
 
   const [isLoginForm, setIsLoginForm] = useState(
@@ -16,48 +21,16 @@ export const LoginForm = () => {
     setIsLoginForm(!isLoginForm);
   };
 
-  const submitHandler = (data) => {
-    const url =
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAFgPDCGK_qe_vSCjpoyodb_8DQPCrGw5k';
-
-    fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        email: data.email,
-        password: data.password,
-        returnSecureToken: true,
-      }),
-      headers: { 'Content-type': 'application/json' },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return res.json().then((data) => {
-            let messageError = 'Autentification failed';
-            if (data && data.error && data.error.message) {
-              messageError = data.error.message;
-            }
-            alert(messageError);
-            throw new Error(messageError);
-          });
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        localStorage.setItem(
-          'user',
-          `{"userEmail":"${
-            data.email
-          }", "loginTime":"${Date.now()}", "idToken":"${
-            data.idToken
-          }","refreshToken":"${data.refreshToken}"}`
-        );
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
+  const submitHandler = async (data) => {
+    console.log('Enter login and pass: ', data);
+    try {
+      await dispatch(Login(data));
+    } catch (err) {
+      console.error('❌ Error:', err);
+    }
   };
+
+  console.log('redux store: ', isLogin);
 
   return (
     <div className={styles.container__form}>
