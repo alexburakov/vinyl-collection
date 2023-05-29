@@ -2,12 +2,17 @@ import styles from './LoginForm.module.css';
 import { Button } from './UI/Button';
 import { Input } from './UI/Input';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Login } from '../store/authSlice';
 
 export const LoginForm = () => {
+
+  useEffect(() => {
+    if(isLogin) 
+  }, [isLogin]);
+
   const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.auth);
 
