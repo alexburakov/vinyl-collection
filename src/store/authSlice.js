@@ -8,6 +8,36 @@ const initialState = {
   token: '',
 };
 
+// .then((res) => {
+//         if (res.ok) {
+//           return res.json();
+//         } else {
+//           return res.json().then((data) => {
+//             let messageError = 'Autentification failed';
+//             if (data && data.error && data.error.message) {
+//               messageError = data.error.message;
+//             }
+//             alert(messageError);
+//             throw new Error(messageError);
+//           });
+//         }
+//       })
+//       .then((data) => {
+//         console.log(data);
+//         localStorage.setItem(
+//           'user',
+//           `{"userEmail":"${
+//             data.email
+//           }", "loginTime":"${Date.now()}", "idToken":"${
+//             data.idToken
+//           }","refreshToken":"${data.refreshToken}"}`
+//         );
+//       })
+//       .catch((err) => {
+//         alert(err.message);
+//       });
+//   };
+
 const url =
   'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAFgPDCGK_qe_vSCjpoyodb_8DQPCrGw5k';
 
