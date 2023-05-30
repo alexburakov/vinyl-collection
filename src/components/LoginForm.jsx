@@ -13,15 +13,17 @@ export const LoginForm = () => {
   const isLogin = useSelector((state) => state.auth.status);
   const { register, handleSubmit } = useForm();
 
-  const [isLoginForm, setIsLoginForm] = useState(
-    useSelector((state) => state.auth.user)
-  );
+  const [isLoginForm, setIsLoginForm] = useState(true);
 
   const isLoginToggle = () => {
     setIsLoginForm(!isLoginForm);
   };
 
   const submitHandler = async (data) => {
+    data = {
+      ...data,
+      signUp: !isLoginForm, // Ваши дополнительные данные
+    };
     console.log('⭐️ Enter login and pass: ', data);
     try {
       await dispatch(Login(data));
@@ -47,7 +49,7 @@ export const LoginForm = () => {
       <p className={styles.form__subheader}>
         {isLoginForm ? 'Not a member? ' : 'Already a member? '}
         <a className={styles.subheader__link} onClick={isLoginToggle}>
-          {isLoginForm ? 'Sign in' : 'Log in'}
+          {isLoginForm ? 'Sign up' : 'Log in'}
         </a>
       </p>
       <div className={styles.form__login}>

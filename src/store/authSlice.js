@@ -38,10 +38,12 @@ const initialState = {
 //       });
 //   };
 
-const url =
-  'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAFgPDCGK_qe_vSCjpoyodb_8DQPCrGw5k';
-
 export const Login = createAsyncThunk('auth/Login', async (data, thunkAPI) => {
+  console.log(`🎯`, data.signUp);
+  const key = 'AIzaSyAFgPDCGK_qe_vSCjpoyodb_8DQPCrGw5k';
+  const url = `https://identitytoolkit.googleapis.com/v1/accounts:${
+    data.signUp ? 'signUp' : 'signInWithPassword'
+  }?key=${key}`;
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -84,6 +86,14 @@ export const authSlice = createSlice({
         state.token = localData.token;
       }
     },
+    isLogout(state) {
+      state.status = null;
+      state.error = null;
+      state.user = '';
+      state.loginTime = null;
+      state.token = '';
+      localStorage.clear();
+    },
   },
   extraReducers: {
     [Login.pending]: (state, action) => {
@@ -120,5 +130,6 @@ export const authSlice = createSlice({
 });
 
 export const onLoading = authSlice.actions.onLoading;
+export const isLogout = authSlice.actions.isLogout;
 
 export default authSlice.reducer;

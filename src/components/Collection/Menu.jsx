@@ -2,7 +2,7 @@ import styles from './Menu.module.css';
 import addItem__ico from '../../static/add_item.svg';
 import logout__ico from '../../static/logout.svg';
 
-export const Menu = ({ open }) => {
+export const Menu = ({ open, logout }) => {
   return (
     <div className={styles.menu__container}>
       <a className={styles.menu__block} onClick={() => open()}>
@@ -23,7 +23,7 @@ export const Menu = ({ open }) => {
           <p>wishlist</p>
         </div>
       </div>
-      <a className={styles.menu__block}>
+      <a className={styles.menu__block} onClick={() => logout()}>
         <img src={logout__ico}></img>
         <p className={styles.menu__block__subheader}>logout</p>
       </a>

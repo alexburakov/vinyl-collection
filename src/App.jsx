@@ -21,9 +21,13 @@ export function App() {
   }, []);
 
   useEffect(() => {
+    let isMounted = true;
     if (isLogin === 'login') {
       navigate('/my-collection');
     }
+    return () => {
+      isMounted = false;
+    };
   }, [isLogin, navigate]);
 
   return (
@@ -45,6 +49,7 @@ export function App() {
           </Suspense>
         }
       />
+
       <Route path="*" element={<Page404 />} />
     </Routes>
   );
