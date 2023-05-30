@@ -72,11 +72,23 @@ export const Login = createAsyncThunk('auth/Login', async (data, thunkAPI) => {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    onLoading(state) {
+      const localString = localStorage.getItem('vinyl_collection_data');
+      const localData = JSON.parse(localString);
+      if (localData) {
+        state.status = 'login';
+        state.error = null;
+        state.user = localData.user;
+        state.loginTime = Date.now();
+        state.token = localData.token;
+      }
+    },
+  },
   extraReducers: {
     [Login.pending]: (state, action) => {
       state.status = 'loading';
-      console.log('loading...');
+      console.log('📦 loading...');
     },
     [Login.fulfilled]: (state, action) => {
       state.status = 'login';
@@ -84,17 +96,29 @@ export const authSlice = createSlice({
       state.user = action.payload.email;
       state.loginTime = Date.now();
       state.token = action.payload.idToken;
-      console.log('login is ok');
+      // localStorage.setItem(
+      //   'vinyl_collection_data',
+      //   `{ user:"${state.user}", loginTime:"${state.loginTime}", token:"${state.token}" } `
+      // );
+      localStorage.setItem(
+        'vinyl_collection_data',
+        JSON.stringify({
+          user: state.user,
+          loginTime: state.loginTime,
+          token: state.token,
+        })
+      );
+      console.log('📦 login is ok:', state);
     },
     [Login.rejected]: (state, action) => {
       state.status = null;
       state.error = action.error.message;
+      localStorage.clear();
       console.log('❌ Err:', action.error.message);
     },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { setUser, setLoginTime, setToken } = authSlice.actions;
+export const onLoading = authSlice.actions.onLoading;
 
 export default authSlice.reducer;

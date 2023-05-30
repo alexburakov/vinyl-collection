@@ -1,6 +1,7 @@
 import styles from './Menu.module.css';
 import addItem__ico from '../../static/add_item.svg';
 import logout__ico from '../../static/logout.svg';
+
 export const Menu = ({ open }) => {
   return (
     <div className={styles.menu__container}>
