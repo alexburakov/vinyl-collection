@@ -8,36 +8,6 @@ const initialState = {
   token: '',
 };
 
-// .then((res) => {
-//         if (res.ok) {
-//           return res.json();
-//         } else {
-//           return res.json().then((data) => {
-//             let messageError = 'Autentification failed';
-//             if (data && data.error && data.error.message) {
-//               messageError = data.error.message;
-//             }
-//             alert(messageError);
-//             throw new Error(messageError);
-//           });
-//         }
-//       })
-//       .then((data) => {
-//         console.log(data);
-//         localStorage.setItem(
-//           'user',
-//           `{"userEmail":"${
-//             data.email
-//           }", "loginTime":"${Date.now()}", "idToken":"${
-//             data.idToken
-//           }","refreshToken":"${data.refreshToken}"}`
-//         );
-//       })
-//       .catch((err) => {
-//         alert(err.message);
-//       });
-//   };
-
 export const Login = createAsyncThunk('auth/Login', async (data, thunkAPI) => {
   console.log(`🎯`, data.signUp);
   const key = 'AIzaSyAFgPDCGK_qe_vSCjpoyodb_8DQPCrGw5k';
@@ -96,7 +66,7 @@ export const authSlice = createSlice({
     },
   },
   extraReducers: {
-    [Login.pending]: (state, action) => {
+    [Login.pending]: (state) => {
       state.status = 'loading';
       console.log('📦 loading...');
     },
@@ -106,10 +76,6 @@ export const authSlice = createSlice({
       state.user = action.payload.email;
       state.loginTime = Date.now();
       state.token = action.payload.idToken;
-      // localStorage.setItem(
-      //   'vinyl_collection_data',
-      //   `{ user:"${state.user}", loginTime:"${state.loginTime}", token:"${state.token}" } `
-      // );
       localStorage.setItem(
         'vinyl_collection_data',
         JSON.stringify({

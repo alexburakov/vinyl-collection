@@ -1,26 +1,18 @@
 import styles from './ItemList.module.css';
 import { Item } from './Item';
-export const ItemList = () => {
+
+export const ItemList = ({ collection }) => {
   return (
     <div className={styles.items__container}>
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
+      {collection.map((element) => (
+        <Item
+          key={element.id}
+          artist={element.artist}
+          album={element.album}
+          year={element.year}
+          imgUrl={element.imgUrl}
+        />
+      ))}
     </div>
   );
 };
