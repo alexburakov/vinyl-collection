@@ -43,7 +43,6 @@ const url =
 
 export const Login = createAsyncThunk('auth/Login', async (data, thunkAPI) => {
   try {
-    //
     const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
@@ -53,8 +52,18 @@ export const Login = createAsyncThunk('auth/Login', async (data, thunkAPI) => {
       }),
       headers: { 'Content-type': 'application/json' },
     });
-    const result = await response.json();
-    return result;
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    } else {
+      const result = await response.json();
+      let messageError = 'Authentication failed';
+      if (result && data.error && data.error.message) {
+        messageError = data.error.message;
+      }
+      alert(messageError);
+      throw new Error(messageError);
+    }
   } catch (err) {
     return thunkAPI.rejectWithValue({ error: err.message });
   }
@@ -71,6 +80,7 @@ export const authSlice = createSlice({
     },
     [Login.fulfilled]: (state, action) => {
       state.status = 'login';
+      state.error = null;
       state.user = action.payload.email;
       state.loginTime = Date.now();
       state.token = action.payload.idToken;

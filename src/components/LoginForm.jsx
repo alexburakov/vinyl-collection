@@ -1,21 +1,16 @@
 import styles from './LoginForm.module.css';
 import { Button } from './UI/Button';
 import { Input } from './UI/Input';
-import { useForm } from 'react-hook-form';
 import { useState, useEffect } from 'react';
-
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Login } from '../store/authSlice';
 
 export const LoginForm = () => {
-
-  useEffect(() => {
-    if(isLogin) 
-  }, [isLogin]);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isLogin = useSelector((state) => state.auth);
-
+  const isLogin = useSelector((state) => state.auth.status);
   const { register, handleSubmit } = useForm();
 
   const [isLoginForm, setIsLoginForm] = useState(
@@ -27,7 +22,7 @@ export const LoginForm = () => {
   };
 
   const submitHandler = async (data) => {
-    console.log('Enter login and pass: ', data);
+    console.log('⭐️ Enter login and pass: ', data);
     try {
       await dispatch(Login(data));
     } catch (err) {
@@ -35,7 +30,14 @@ export const LoginForm = () => {
     }
   };
 
-  console.log('redux store: ', isLogin);
+  useEffect(() => {
+    console.log('✅', isLogin);
+    if (isLogin === 'login') {
+      navigate('/my-collection');
+    }
+  }, [isLogin, navigate]);
+
+  console.log('⭐️ redux store: ', isLogin);
 
   return (
     <div className={styles.container__form}>
