@@ -24,7 +24,7 @@ const MyCollection = () => {
   }, [isLogin, navigate]);
 
   useEffect(() => {
-    dispatch(onLoading());
+    //dispatch(onLoading());
   }, []);
 
   const toggle = () => setModalVisible(!modalVisible);
