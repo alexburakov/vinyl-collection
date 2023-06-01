@@ -1,5 +1,6 @@
 .item__container {
   width: 100%;
+  transition: all 0.3s ease;
 }
 .txt__container {
   width: 96%;
@@ -20,8 +21,10 @@
   object-fit: cover;
 }
 
+.wish {
+  filter: grayscale() contrast(0.7);
+}
+
 .item__container:hover img {
-  filter: contrast(2.5);
-  filter: saturate(1.2);
-  transform: scale(0.98);
+  transform: scale(0.96);
 }

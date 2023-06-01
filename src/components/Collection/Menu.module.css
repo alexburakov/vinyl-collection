@@ -19,6 +19,8 @@
   transition: all 0.3s ease;
   color: var(--white);
   font-size: 1.4rem;
+  border: none;
+  background-color: var(--background-black_w);
 }
 
 .menu__block:hover {

@@ -32,3 +32,8 @@
   z-index: 10;
   background-color: var(--background-black);
 }
+
+.empty__message {
+  text-align: center;
+  color: var(--white);
+}

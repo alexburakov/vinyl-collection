@@ -7,6 +7,7 @@ export const ItemList = ({ collection }) => {
       {collection.map((element) => (
         <Item
           key={element.id}
+          wish={element.wish}
           artist={element.artist}
           album={element.album}
           year={element.year}

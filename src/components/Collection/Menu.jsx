@@ -2,23 +2,46 @@ import styles from './Menu.module.css';
 import addItem__ico from '../../static/add_item.svg';
 import logout__ico from '../../static/logout.svg';
 
-export const Menu = ({ open, logout, itemCount, wishCount }) => {
+export const Menu = ({
+  open,
+  logout,
+  allItemsCount,
+  itemCount,
+  wishCount,
+  setFilter,
+  filterState,
+}) => {
   return (
     <div className={styles.menu__container}>
-      <a className={styles.menu__block} onClick={() => open()}>
+      <button className={styles.menu__block} onClick={() => open()}>
         <img src={addItem__ico}></img>
         <p className={styles.menu__block__subheader}>add album</p>
-      </a>
+      </button>
       <div className={styles.menu__filters}>
-        <div className={styles.menu__block}>
-          <p className={styles.menu__number}>{itemCount}</p>
+        <div
+          className={`${styles.menu__block} ${
+            filterState === 'all' ? styles.menu__filter__active : ''
+          }`}
+          onClick={() => setFilter('all')}
+        >
+          <p className={styles.menu__number}>{allItemsCount}</p>
           <p>all</p>
         </div>
-        <div className={`${styles.menu__block} ${styles.menu__filter__active}`}>
+        <div
+          className={`${styles.menu__block} ${
+            filterState === 'collection' ? styles.menu__filter__active : ''
+          }`}
+          onClick={() => setFilter('collection')}
+        >
           <p className={styles.menu__number}>{itemCount}</p>
           <p>collection</p>
         </div>
-        <div className={styles.menu__block}>
+        <div
+          className={`${styles.menu__block} ${
+            filterState === 'wish' ? styles.menu__filter__active : ''
+          }`}
+          onClick={() => setFilter('wish')}
+        >
           <p className={styles.menu__number}>{wishCount}</p>
           <p>wishlist</p>
         </div>
