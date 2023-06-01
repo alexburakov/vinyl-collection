@@ -10,7 +10,7 @@ const initialState = {
 
 export const Login = createAsyncThunk('auth/Login', async (data, thunkAPI) => {
   console.log(`🎯`, data.signUp);
-  const key = 'AIzaSyAFgPDCGK_qe_vSCjpoyodb_8DQPCrGw5k';
+  const key = import.meta.env.VITE_API_AUTH;
   const url = `https://identitytoolkit.googleapis.com/v1/accounts:${
     data.signUp ? 'signUp' : 'signInWithPassword'
   }?key=${key}`;

@@ -1,6 +1,6 @@
 .item__container {
   width: 100%;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 .txt__container {
   width: 96%;
@@ -8,6 +8,12 @@
 .txt {
   margin-top: 0.8rem;
   color: var(--white);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .txt__gray {
@@ -27,4 +33,8 @@
 
 .item__container:hover img {
   transform: scale(0.96);
+}
+
+.item__container:hover .txt {
+  -webkit-line-clamp: 14;
 }

@@ -1,0 +1,7 @@
+.modal__ul {
+  list-style-type: none;
+}
+.modal__ul li {
+  list-style-type: none;
+  min-width: 100%;
+}

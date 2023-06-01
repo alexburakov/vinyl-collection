@@ -45,6 +45,10 @@
   background-color: var(--background-black);
 }
 
+.input__button {
+  margin-left: 1.6rem;
+  min-width: 10rem;
+}
 .modal__qr__btn {
   margin-left: 3.2rem;
   min-width: 6.4rem;

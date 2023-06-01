@@ -1,20 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyAFgPDCGK_qe_vSCjpoyodb_8DQPCrGw5k',
-  authDomain: 'vinyl-collection-86bff.firebaseapp.com',
-  databaseURL:
-    'https://vinyl-collection-86bff-default-rtdb.europe-west1.firebasedatabase.app',
-  projectId: 'vinyl-collection-86bff',
-  storageBucket: 'vinyl-collection-86bff.appspot.com',
-  messagingSenderId: '275282737285',
-  appId: '1:275282737285:web:2c808f9810f891dbcf11ec',
-};
-
+import { firebaseConfig } from '../helpers/configData.js';
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
 
 const initialState = {
