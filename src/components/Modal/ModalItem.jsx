@@ -1,6 +1,8 @@
 import styles from './ModalItem.module.css';
 import { Button } from '../../components/UI/Button';
 export const ModalItem = ({ itemData, myChose }) => {
+  const wish = true;
+  const have = false;
   return (
     <div className={styles.modal__item__container}>
       <img className={styles.item__img} src={itemData.cover_image}></img>
@@ -12,14 +14,14 @@ export const ModalItem = ({ itemData, myChose }) => {
       <div className={styles.btn__container}>
         <Button
           onClick={() => {
-            myChose(itemData);
+            myChose(itemData, have);
           }}
         >
           Have
         </Button>
         <Button
           onClick={() => {
-            myChose(itemData);
+            myChose(itemData, wish);
           }}
         >
           Wish
@@ -28,17 +30,3 @@ export const ModalItem = ({ itemData, myChose }) => {
     </div>
   );
 };
-{
-  /* <li key={album.id}>
-  <img style={{ width: '100px' }} src={`${album.thumb}`} alt="" />
-  <a href={`https://www.discogs.com${album.uri}`}>{album.title}</a>
-  {album.year}
-  <button
-    onClick={() => {
-      myChose(album);
-    }}
-  >
-    Click
-  </button>
-</li>; */
-}
