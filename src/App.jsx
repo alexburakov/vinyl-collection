@@ -42,6 +42,14 @@ export function App() {
         }
       />
       <Route
+        path="/signUp"
+        element={
+          <Suspense fallback={<Loading />}>
+            <MainPage />
+          </Suspense>
+        }
+      />
+      <Route
         path="/my-collection"
         element={
           <Suspense fallback={<Loading />}>

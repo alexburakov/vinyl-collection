@@ -9,7 +9,7 @@ import { Modal } from '../components/Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { isLogout } from '../store/authSlice';
-import { loadingCollection } from '../store/collectionSlice';
+import { cleanCollection, loadingCollection } from '../store/collectionSlice';
 
 const MyCollection = () => {
   const navigate = useNavigate();
@@ -59,6 +59,7 @@ const MyCollection = () => {
   const toggle = () => setModalVisible(!modalVisible);
   const logout = () => {
     dispatch(isLogout());
+    dispatch(cleanCollection());
   };
   return (
     <>

@@ -17,12 +17,13 @@ export const LoginForm = () => {
 
   const isLoginToggle = () => {
     setIsLoginForm(!isLoginForm);
+    isLoginForm ? navigate('/signUp') : navigate('/login');
   };
 
   const submitHandler = async (data) => {
     data = {
       ...data,
-      signUp: !isLoginForm, // Ваши дополнительные данные
+      signUp: !isLoginForm,
     };
     console.log('⭐️ Enter login and pass: ', data);
     try {

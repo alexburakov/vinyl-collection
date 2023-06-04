@@ -7,35 +7,41 @@ import { Button } from '../UI/Button';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
 import { firebaseConfig } from '../../helpers/configData';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadingCollection } from '../../store/collectionSlice';
+import { useForm } from 'react-hook-form';
 
 export const Modal = ({ close }) => {
+  const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.auth.user);
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
   const [dataRes, setData] = useState([]);
+  const [allPages, setAllPages] = useState({});
 
-  async function fetchArtistAlbums(query) {
+  const fetchArtistAlbums = async (query) => {
     try {
-      const page = 1;
       const url = `https://api.discogs.com/database/search?q=${query}&key=${
         import.meta.env.VITE_API_DISCOGS_KEY
-      }=${page}&per_page=50&format=vinyl`;
+      }=1&per_page=100&format=vinyl`;
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data.results);
-      setData(data.results);
+      const dataPage = data.results;
+      console.log(data);
+      setData(dataPage);
+      setAllPages(data.pagination);
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
-  const searchAlbums = () => {
-    fetchArtistAlbums('звери');
+  const searchAlbums = async (data) => {
+    fetchArtistAlbums(data.query.toLowerCase());
   };
 
   const addInCollection = async (choiseAlbum, wish) => {
-    const user = 'user1@mail.ru';
-
     const [artist, album] = choiseAlbum.title
       .split('-')
       .map((item) => item.trim());
@@ -43,7 +49,7 @@ export const Modal = ({ close }) => {
     const id = choiseAlbum.id;
     const imgUrl = choiseAlbum.cover_image;
 
-    const docRef = await addDoc(collection(db, user), {
+    const docRef = await addDoc(collection(db, currentUser), {
       wish: wish,
       artist: artist,
       album: album,
@@ -58,6 +64,7 @@ export const Modal = ({ close }) => {
     console.log(imgUrl);
     console.log(wish);
     console.log('Document written with ID: ', docRef.id);
+    dispatch(loadingCollection(currentUser));
   };
 
   return (
@@ -67,14 +74,22 @@ export const Modal = ({ close }) => {
         ✕
       </button>
       <div className={styles.input__container}>
-        <Input />
+        <Input
+          placeholder={'Album, Artist, Barcode, more...'}
+          register={register('query', { required: true })}
+          onChange={() => {}}
+        />
         <div className={styles.input__button}>
-          <Button onClick={searchAlbums}>Search</Button>
+          <Button onClick={handleSubmit(searchAlbums)}>Search</Button>
         </div>
         <button className={styles.modal__qr__btn}>
           <img src={qr}></img>
         </button>
       </div>
+      <p>
+        allPages: {allPages.pages}
+        Page: {allPages.page}
+      </p>
       <ModalItemsList resultSearch={dataRes} myChose={addInCollection} />
     </div>
   );

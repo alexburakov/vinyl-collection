@@ -25,6 +25,7 @@
   border-radius: 1.6rem;
   transition: all 0.3s ease;
   object-fit: cover;
+  background-color: var(--white_placeholder);
 }
 
 .wish {

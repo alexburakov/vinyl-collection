@@ -4,7 +4,7 @@ export function filterObjectsByValue(objects, searchString) {
       if (typeof value === 'number') {
         return value === parseInt(searchString);
       } else if (typeof value === 'string') {
-        return value.includes(searchString);
+        return value.toLowerCase().includes(searchString.toLowerCase());
       }
       return false;
     })

@@ -27,25 +27,60 @@ export const loadingCollection = createAsyncThunk(
   }
 );
 
+// export const collectionSlice = createSlice({
+//   name: 'collection',
+//   initialState,
+//   reducers: {
+//     cleanCollection(state) {
+//       state.status = null;
+//       state.error = null;
+//       state.collection = [];
+//     },
+//   },
+//   extraReducers: {
+//     [loadingCollection.pending]: (state) => {
+//       state.status = 'pengingData';
+//     },
+//     [loadingCollection.fulfilled]: (state, action) => {
+//       state.status = 'loadingData';
+//       state.collection = action.payload;
+//       console.log(state.collection);
+//     },
+//     [loadingCollection.rejected]: (state, action) => {
+//       state.status = 'errorData';
+//       state.error = action.error.message;
+//       console.log('❌ Err:', action.error.message);
+//     },
+//   },
+// });
 export const collectionSlice = createSlice({
   name: 'collection',
   initialState,
-  reducers: {},
-  extraReducers: {
-    [loadingCollection.pending]: (state) => {
-      state.status = 'pengingData';
-    },
-    [loadingCollection.fulfilled]: (state, action) => {
-      state.status = 'loadingData';
-      state.collection = action.payload;
-      console.log(state.collection);
-    },
-    [loadingCollection.rejected]: (state, action) => {
-      state.status = 'errorData';
-      state.error = action.error.message;
-      console.log('❌ Err:', action.error.message);
+  reducers: {
+    cleanCollection(state) {
+      state.status = null;
+      state.error = null;
+      state.collection = [];
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadingCollection.pending, (state) => {
+        state.status = 'pendingData';
+      })
+      .addCase(loadingCollection.fulfilled, (state, action) => {
+        state.status = 'loadingData';
+        state.collection = action.payload;
+        console.log(state.collection);
+      })
+      .addCase(loadingCollection.rejected, (state, action) => {
+        state.status = 'errorData';
+        state.error = action.error.message;
+        console.log('❌ Err:', action.error.message);
+      });
+  },
 });
+
+export const cleanCollection = collectionSlice.actions.cleanCollection;
 
 export default collectionSlice.reducer;
