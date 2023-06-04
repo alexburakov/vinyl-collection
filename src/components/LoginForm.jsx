@@ -48,7 +48,7 @@ export const LoginForm = () => {
 
   console.log('⭐️ redux store: ', isLogin);
 
-  console.log('RHF err: ', errors, errors?.email?.message);
+  console.log('RHF err: ', errors);
 
   return (
     <div className={styles.container__form}>
