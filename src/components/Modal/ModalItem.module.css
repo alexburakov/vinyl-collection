@@ -40,3 +40,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.in__collection {
+  text-align: center;
+  width: 100%;
+  color: var(--white_2);
+  padding: 1.6rem;
+  border-radius: 1.2rem;
+  background-color: var(--background-black_w);
+}

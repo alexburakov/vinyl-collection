@@ -11,10 +11,12 @@ export const Content = ({ collection, collectionLength, onChangeInput }) => {
       <div className={styles.input__container}>
         <Input onChangeInput={onChangeInput} />
       </div>
-      {collectionLength === 0 && (
+      {collectionLength && collectionLength === 0 ? (
         <p className={styles.empty__message}>
           Your collection is empty, it's time to add your first album!
         </p>
+      ) : (
+        ''
       )}
       <ItemList collection={collection} collectionLength={collectionLength} />
     </div>

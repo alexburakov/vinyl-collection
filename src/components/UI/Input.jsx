@@ -6,15 +6,17 @@ export const Input = forwardRef(function MyInput(
   ref
 ) {
   return (
-    <input
-      onChange={(e) => {
-        onChangeInput(e.target.value);
-      }}
-      className={styles.input}
-      placeholder={placeholder}
-      type={type}
-      ref={ref}
-      {...register}
-    ></input>
+    <>
+      <input
+        onChange={(e) => {
+          onChangeInput(e.target.value);
+        }}
+        className={styles.input}
+        placeholder={placeholder}
+        type={type}
+        ref={ref}
+        {...register}
+      ></input>
+    </>
   );
 });

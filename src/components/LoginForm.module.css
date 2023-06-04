@@ -50,3 +50,8 @@
   margin-top: 1.6rem;
   color: var(--white);
 }
+
+.input__error {
+  margin-top: 0.4rem;
+  color: var(--orange_dark);
+}

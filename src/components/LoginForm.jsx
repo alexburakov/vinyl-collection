@@ -11,7 +11,12 @@ export const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.auth.status);
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    trigger,
+    formState: { errors },
+  } = useForm();
 
   const [isLoginForm, setIsLoginForm] = useState(true);
 
@@ -21,6 +26,7 @@ export const LoginForm = () => {
   };
 
   const submitHandler = async (data) => {
+    await trigger();
     data = {
       ...data,
       signUp: !isLoginForm,
@@ -42,6 +48,8 @@ export const LoginForm = () => {
 
   console.log('⭐️ redux store: ', isLogin);
 
+  console.log('RHF err: ', errors, errors?.email?.message);
+
   return (
     <div className={styles.container__form}>
       <h2 className={styles.form__header}>
@@ -54,16 +62,34 @@ export const LoginForm = () => {
         </a>
       </p>
       <div className={styles.form__login}>
-        <form onSubmit={handleSubmit(submitHandler)}>
+        <form noValidate onSubmit={handleSubmit(submitHandler)}>
           <Input
             placeholder={'E-Mail'}
             type={'email'}
-            register={register('email', { required: true })}
+            errors={errors}
+            register={register('email', {
+              required: 'Must be filled',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'invalid email address',
+              },
+            })}
           />
+          {errors?.email && (
+            <p className={styles.input__error}>{errors?.email?.message}</p>
+          )}
           <Input
-            placeholder={'Password'}
-            register={register('password', { required: true, maxLength: 20 })}
+            placeholder={'password'}
+            type="password"
+            register={register('password', {
+              required: 'Must be filled',
+              minLength: { value: 6, message: 'min 6' },
+              maxLength: 20,
+            })}
           />
+          {errors?.password && (
+            <p className={styles.input__error}>{errors?.password?.message}</p>
+          )}
           <p className={styles.mg_1}></p>
           <Button>{isLoginForm ? 'Log in' : 'Create account'}</Button>
         </form>

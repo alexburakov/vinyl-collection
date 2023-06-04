@@ -5,7 +5,7 @@ import { Input } from '../UI/Input';
 import { ModalItemsList } from './ModalItemsList';
 import { Button } from '../UI/Button';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { firebaseConfig } from '../../helpers/configData';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadingCollection } from '../../store/collectionSlice';
@@ -14,6 +14,7 @@ import { useForm } from 'react-hook-form';
 export const Modal = ({ close }) => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const rawCollection = useSelector((state) => state.collection.collection);
   const currentUser = useSelector((state) => state.auth.user);
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
@@ -21,14 +22,20 @@ export const Modal = ({ close }) => {
   const [dataRes, setData] = useState([]);
   const [allPages, setAllPages] = useState({});
 
-  const fetchArtistAlbums = async (query) => {
+  const fetchArtistAlbums = async (query, page = 1) => {
     try {
       const url = `https://api.discogs.com/database/search?q=${query}&key=${
         import.meta.env.VITE_API_DISCOGS_KEY
-      }=1&per_page=100&format=vinyl`;
+      }=${page}&per_page=100&format=vinyl`;
       const response = await fetch(url);
       const data = await response.json();
-      const dataPage = data.results;
+      const haveId = rawCollection.map((elem) => elem.idAlbum);
+      const dataPage = data.results.map((obj) => {
+        if (haveId.includes(obj.id)) {
+          return { ...obj, have: true };
+        }
+        return obj;
+      });
       console.log(data);
       setData(dataPage);
       setAllPages(data.pagination);
@@ -51,6 +58,7 @@ export const Modal = ({ close }) => {
 
     const docRef = await addDoc(collection(db, currentUser), {
       wish: wish,
+      idAlbum: id,
       artist: artist,
       album: album,
       year: year,
