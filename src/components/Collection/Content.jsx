@@ -13,7 +13,7 @@ export const Content = ({ collection, collectionLength, onChangeInput }) => {
       </div>
       {collectionLength && collectionLength === 0 ? (
         <p className={styles.empty__message}>
-          Your collection is empty, it's time to add your first album!
+          Your collection is empty, time to add your first album!
         </p>
       ) : (
         ''
