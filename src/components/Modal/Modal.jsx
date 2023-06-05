@@ -112,12 +112,14 @@ export const Modal = ({ close }) => {
       {dataRes.length !== 0 ? (
         <p className={styles.pagination__block}>
           {allPages.page} of {allPages.pages} pages
-          <button
-            className={styles.pagination__block__btn}
-            onClick={() => nextPageLoad()}
-          >
-            Next page
-          </button>
+          {allPages.page !== allPages.pages && (
+            <button
+              className={styles.pagination__block__btn}
+              onClick={() => nextPageLoad()}
+            >
+              Next page
+            </button>
+          )}
         </p>
       ) : (
         ''
