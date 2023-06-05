@@ -5,7 +5,9 @@ Vinylbox - my pet project that I created to practice typical tasks of a frontend
 [Check The Live Demo](https://www.vinylbox.burakov.pro)
 
 ## Screens
-![](http://url/to/img.png)
+![screen 1](https://cdn.dribbble.com/userupload/7588148/file/original-cc6c1d6831985af09d68603635fcbc54.jpg)
+![screen 2](https://cdn.dribbble.com/userupload/7588150/file/original-09c6ed4f6811bf49a9ea24b96ac02e0e.jpg)
+![screen 3](https://cdn.dribbble.com/userupload/7588149/file/original-6c2a790b2eff96cd3c2a1fdee020ac5f.jpg)
 
 ## Features
 
