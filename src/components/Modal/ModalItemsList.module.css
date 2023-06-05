@@ -5,3 +5,7 @@
   list-style-type: none;
   min-width: 100%;
 }
+
+.zero__state__text {
+  text-align: center;
+}

@@ -93,10 +93,10 @@ export const LoginForm = () => {
           <p className={styles.mg_1}></p>
           <Button>{isLoginForm ? 'Log in' : 'Create account'}</Button>
         </form>
-        <span className={styles.form__sep}>or</span>
+        {/* <span className={styles.form__sep}>or</span>
         <Button>
           {isLoginForm ? 'Log in with Google' : 'Sign up with Google'}
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

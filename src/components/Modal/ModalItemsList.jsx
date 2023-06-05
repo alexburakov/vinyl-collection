@@ -12,7 +12,7 @@ export const ModalItemsList = ({ resultSearch, myChose }) => {
             </li>
           ))
         ) : (
-          <p>Нет данных для отображения</p>
+          <p className={styles.zero__state__text}>Нет данных для отображения</p>
         )}
       </ul>
     </div>
