@@ -31,7 +31,6 @@ export const LoginForm = () => {
       ...data,
       signUp: !isLoginForm,
     };
-    console.log('⭐️ Enter login and pass: ', data);
     try {
       await dispatch(Login(data));
     } catch (err) {
@@ -40,15 +39,10 @@ export const LoginForm = () => {
   };
 
   useEffect(() => {
-    console.log('✅', isLogin);
     if (isLogin === 'login') {
       navigate('/my-collection');
     }
   }, [isLogin, navigate]);
-
-  console.log('⭐️ redux store: ', isLogin);
-
-  console.log('RHF err: ', errors);
 
   return (
     <div className={styles.container__form}>

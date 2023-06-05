@@ -1,5 +1,5 @@
 import styles from './Modal.module.css';
-import qr from '../../static/qr.svg';
+// import qr from '../../static/qr.svg';
 import { useState } from 'react';
 import { Input } from '../UI/Input';
 import { ModalItemsList } from './ModalItemsList';
@@ -36,7 +36,6 @@ export const Modal = ({ close }) => {
         }
         return obj;
       });
-      console.log(data);
       setData(dataPage);
       setAllPages(data.pagination);
     } catch (error) {
@@ -78,7 +77,7 @@ export const Modal = ({ close }) => {
         }
         return obj;
       });
-      console.log(data);
+
       setData(dataPage);
       setAllPages(data.pagination);
     } catch (error) {

@@ -23,7 +23,6 @@ const MyCollection = () => {
 
   const setFilter = (filterState) => {
     setFilterState(filterState);
-    console.log(filterState);
     if (filterState === 'wish') {
       setFilteredCollection(rawCollection.filter((item) => item.wish === true));
     } else if (filterState === 'collection') {
@@ -31,11 +30,9 @@ const MyCollection = () => {
     } else if (filterState === 'all') {
       setFilteredCollection(rawCollection);
     }
-    console.log(filteredCollection);
   };
 
   const onChangeInput = (value) => {
-    //setFilteredCollection(filterObjectsByValue(filteredCollection, value));
     const filteredResult = filterObjectsByValue(rawCollection, value);
     setFilteredCollection(filteredResult);
   };
