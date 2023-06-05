@@ -31,13 +31,19 @@ Vinylbox - my pet project that I created to practice typical tasks of a frontend
 - Deploying on netlify.com and linking to a personal domain
 
 ## How to run locally
+1. Make sure you have Node.js installed
+2. Navigate to the folder with the downloaded Vite project using the `cd` command
+```
+cd path/to/my-vite-project
+```
+3. Install the project dependencies by running the following command at the command line:
+```
+yarn install
+```
+4. After installing the dependencies, you can start the project by running the command
+```
+yarn dev
+```
+5. You will also need to get authorization keys for the services at https://firebase.google.com and https://www.discogs.com/developers
 
-```
-npm init
-npm i
-npm start dev
-```
-or
-```
-yarn
-```
+6. Write in the .env file the received keys
