@@ -7,11 +7,12 @@
 
 .container {
   width: 100%;
+  overflow: hidden;
 }
 
 .item__img {
-  width: 8.8rem;
-  height: 8.8rem;
+  width: 6.4rem;
+  height: 6.4rem;
 
   border-radius: 1.2rem;
   background-color: var(--white_placeholder);

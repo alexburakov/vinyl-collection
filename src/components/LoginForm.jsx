@@ -48,7 +48,7 @@ export const LoginForm = () => {
 
   console.log('⭐️ redux store: ', isLogin);
 
-  console.log('RHF err: ', errors, errors?.email?.message);
+  console.log('RHF err: ', errors);
 
   return (
     <div className={styles.container__form}>
@@ -93,10 +93,10 @@ export const LoginForm = () => {
           <p className={styles.mg_1}></p>
           <Button>{isLoginForm ? 'Log in' : 'Create account'}</Button>
         </form>
-        <span className={styles.form__sep}>or</span>
+        {/* <span className={styles.form__sep}>or</span>
         <Button>
           {isLoginForm ? 'Log in with Google' : 'Sign up with Google'}
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

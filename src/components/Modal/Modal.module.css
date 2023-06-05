@@ -66,3 +66,28 @@
 .modal__qr__btn:hover img {
   filter: invert();
 }
+
+.pagination__block {
+  margin-bottom: 3.2rem;
+}
+
+.pagination__block__btn {
+  margin-left: 1.6rem;
+  border: none;
+  background-color: transparent;
+  color: var(--orange);
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.pagination__block__btn:hover {
+  color: var(--orange_dark);
+}
+
+@media only screen and (max-width: 560px) {
+  .modal__container {
+    margin-left: 0rem;
+    margin-right: 0rem;
+  }
+}

@@ -43,7 +43,6 @@ export const Modal = ({ close }) => {
       console.error(error);
     }
   };
-
   const searchAlbums = async (data) => {
     fetchArtistAlbums(data.query.toLowerCase());
   };
@@ -64,15 +63,31 @@ export const Modal = ({ close }) => {
       year: year,
       imgUrl: choiseAlbum.cover_image,
     });
-
-    console.log(artist);
-    console.log(album);
-    console.log(year);
-    console.log(id);
-    console.log(imgUrl);
-    console.log(wish);
-    console.log('Document written with ID: ', docRef.id);
     dispatch(loadingCollection(currentUser));
+  };
+
+  const loadNextPage = async () => {
+    try {
+      const url = allPages.urls.next;
+      const response = await fetch(url);
+      const data = await response.json();
+      const haveId = rawCollection.map((elem) => elem.idAlbum);
+      const dataPage = data.results.map((obj) => {
+        if (haveId.includes(obj.id)) {
+          return { ...obj, have: true };
+        }
+        return obj;
+      });
+      console.log(data);
+      setData(dataPage);
+      setAllPages(data.pagination);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const nextPageLoad = () => {
+    loadNextPage();
   };
 
   return (
@@ -90,14 +105,23 @@ export const Modal = ({ close }) => {
         <div className={styles.input__button}>
           <Button onClick={handleSubmit(searchAlbums)}>Search</Button>
         </div>
-        <button className={styles.modal__qr__btn}>
+        {/* <button className={styles.modal__qr__btn}>
           <img src={qr}></img>
-        </button>
+        </button> */}
       </div>
-      <p>
-        allPages: {allPages.pages}
-        Page: {allPages.page}
-      </p>
+      {dataRes.length !== 0 ? (
+        <p className={styles.pagination__block}>
+          {allPages.page} of {allPages.pages} pages
+          <button
+            className={styles.pagination__block__btn}
+            onClick={() => nextPageLoad()}
+          >
+            Next page
+          </button>
+        </p>
+      ) : (
+        ''
+      )}
       <ModalItemsList resultSearch={dataRes} myChose={addInCollection} />
     </div>
   );
