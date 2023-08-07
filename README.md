@@ -1,6 +1,6 @@
 # Vinyl-collection app
 
-Vinylbox - my pet project that I created to practice typical tasks of a frontend developer using the React library. The application allows you to securely and conveniently store your digital collection of vinyl records
+Vinylbox - my pet project that I created to practice typical tasks of a frontend developer using the React library. The application allows you to securely and conveniently store your digital collection of vinyl records.
 
 [Check The Live Demo](https://www.vinylbox.burakov.pro)
 
